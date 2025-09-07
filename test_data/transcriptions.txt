@@ -1,0 +1,3 @@
+normal.wav,the quick brown fox jumps over the lazy dog
+high_pitch.wav,the quick brown fox jumps over the lazy dog
+low_pitch.wav,the quick brown fox jumps over the lazy dog

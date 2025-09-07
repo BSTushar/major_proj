@@ -1,0 +1,9 @@
+Flask
+librosa
+pydub
+tensorflow
+transformers
+torch
+soundfile
+matplotlib
+JiWER

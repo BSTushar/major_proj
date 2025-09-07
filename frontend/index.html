@@ -3,50 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Speech-to-Text</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Real-Time Transcription</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Advanced Speech-to-Text</h1>
-        <p>A CNN-LSTM model for noisy environments with advanced features.</p>
+        <h1>Real-Time Speech-to-Text</h1>
+        <p>Start recording to see your words transcribed in real time.</p>
 
         <div class="main-content">
             <div class="audio-controls">
-                <button id="recordButton" class="btn btn-primary"><span class="icon">🎙️</span> Record</button>
-                <button id="stopButton" class="btn btn-secondary" disabled><span class="icon">⏹️</span> Stop</button>
-                <div class="visualizer-container">
-                    <canvas id="audioVisualizer" width="300" height="50"></canvas>
-                </div>
+                <button id="start-btn" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mic"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                    Start
+                </button>
+                <button id="stop-btn" class="btn btn-secondary" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-stop-circle"><circle cx="12" cy="12" r="10"></circle><rect x="9" y="9" width="6" height="6"></rect></svg>
+                    Stop
+                </button>
             </div>
-            
+
+            <div class="visualizer-container">
+                <div id="audioVisualizer"></div>
+            </div>
+
             <div class="status-message">
-                <p id="status"></p>
-                <div id="loadingSpinner" class="spinner" style="display:none;"></div>
+                <p id="status">Click "Start" to begin recording...</p>
             </div>
 
             <div class="transcription-output">
-                <h2>Transcription:</h2>
+                <h2>Live Transcription</h2>
                 <p id="transcriptionText"></p>
             </div>
-            
-            <div class="audio-playback" style="display:none;">
-                <h2>Recorded Audio:</h2>
-                <audio id="audioPlayer" controls></audio>
-                <a id="downloadAudio" class="btn btn-link" download="recording.webm">Download Audio</a>
+
+            <div class="audio-playback">
+                <h2>Audio Playback</h2>
+            </div>
+
+            <div class="transcription-history">
+                <h2>Transcription History</h2>
+                <ul>
+                    <li>The quick brown fox jumps over the lazy dog.</li>
+                    <li>This is a sample transcription to show the styling.</li>
+                </ul>
             </div>
         </div>
-
-        <div class="transcription-history">
-            <h2>Transcription History</h2>
-            <ul id="historyList"></ul>
-        </div>
     </div>
-    
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="static/js/script.js"></script>
 </body>
 </html>
